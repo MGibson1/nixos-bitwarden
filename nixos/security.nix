@@ -64,4 +64,13 @@
     };
   };
   services.gnome.gnome-keyring.enable = true;
+
+  # 1. nix-shell -p pam_u2f
+  # 2. mkdir -p ~/.config/Yubico
+  # 3. pamu2fcfg > ~/.config/Yubico/u2f_keys
+  # 4. add another yubikey (optional): pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
 }
