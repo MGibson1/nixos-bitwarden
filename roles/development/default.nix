@@ -29,5 +29,7 @@
     watch # rerun commands on a schedule
 
     sshfs # ssh file mounting
+
+    powershell # cross platform shell necessary for bitwarden dev scripts
   ];
 }
