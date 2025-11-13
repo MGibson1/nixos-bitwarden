@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) mkOption types;
@@ -44,6 +45,11 @@ in {
       };
       default = {};
       description = "X11 keyboard configuration";
+    };
+    default-shell = mkOption {
+      type = types.package;
+      default = pkgs.bash;
+      description = "The default user shell to apply";
     };
   };
 

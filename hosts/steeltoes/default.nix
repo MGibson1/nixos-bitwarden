@@ -1,6 +1,7 @@
 {
   vars,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -18,6 +19,8 @@
   ];
 
   vars.user = "mgibson";
+  vars.default-shell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   home-manager = {
     users.${vars.user}.imports = [

@@ -9,6 +9,7 @@ in {
   #   file = ../secrets/${vars.user}_password_hash.age;
   # }
 
+  users.defaultUserShell = vars.default-shell;
   users.users.${vars.user} = {
     isNormalUser = true;
     extraGroups = ["wheel"];
