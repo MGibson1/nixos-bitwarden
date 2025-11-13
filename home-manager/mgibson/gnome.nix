@@ -5,21 +5,17 @@
 
   vars.home.gnome = {
     pinned = [];
-    installed-extensions = with pkgs.gnomeExtensions;
-      [
-        battery-time-percentage-compact
-        caffeine
-        ddterm
-        easyeffects-preset-selector
-        gtile
-        night-theme-switcher
-        appindicator
-        user-themes
-        vitals
-      ]
-      ++ (with pkgs; [
-        pomodoro
-      ]);
+    installed-extensions = with pkgs.gnomeExtensions; [
+      battery-time-percentage-compact
+      caffeine
+      ddterm
+      easyeffects-preset-selector
+      gtile
+      night-theme-switcher
+      appindicator
+      user-themes
+      vitals
+    ];
     enabled-extensions = [
       "batterytimepercentagecompact@sagrland.de"
       "caffeine@patapon.info"
@@ -61,15 +57,6 @@
       background-opacity = 0.95;
       panel-icon-type = "none";
       shortcut-win-new-tab = ["<Shift><Control>t"];
-    };
-    # Pomodoro settings
-    "org/gnome/shell/extensions/pomodoro" = {
-      work-time = 25;
-      short-break-time = 5;
-      long-break-time = 15;
-      long-break-interval = 4;
-      enable-sound = false;
-      enable-notification = false;
     };
     # Night theme switch settings
     "org/gnome/shell/extensions/nightthemeswitcher/time" = {

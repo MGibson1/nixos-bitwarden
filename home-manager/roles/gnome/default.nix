@@ -34,6 +34,13 @@ in {
 
         favorite-apps = cfg.pinned;
       };
+      "org/gnome/desktop/break-reminders" = {
+        selected-breaks = ["eyesight" "movement"];
+      };
+      "org/gnome/desktop/break-reminders/movement" = {
+        duration-seconds = 300;
+        interval-seconds = 1800;
+      };
     };
 
     home.packages = cfg.installed-extensions;
