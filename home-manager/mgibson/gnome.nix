@@ -4,7 +4,13 @@
   ];
 
   vars.home.gnome = {
-    pinned = [];
+    pinned = [
+      "firefox.desktop"
+      "code.desktop"
+      "com.slack.Slack.desktop"
+      "org.gnome.Nautilus.desktop"
+      "io.dbeaver.DBeaverCommunity.desktop"
+    ];
     installed-extensions = with pkgs.gnomeExtensions; [
       battery-time-percentage-compact
       caffeine
