@@ -68,5 +68,13 @@
     "org/gnome/shell/extensions/nightthemeswitcher/time" = {
       manual-schedule = false;
     };
+    # Background
+    "org/gnome/desktop/background" = {
+      color-shading-type = "solid";
+      picture-options = "scaled";
+      picture-uri = "file://${builtins.toString ../backgrounds/innovation.png}";
+      primary-color = "#000000000000";
+      secondary-color = "#000000000000";
+    };
   };
 }

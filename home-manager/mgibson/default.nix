@@ -2,6 +2,7 @@
   imports = [
     ./gnome.nix
     ../roles/developer
+    ../roles/creative
 
     ../default.nix
   ];
