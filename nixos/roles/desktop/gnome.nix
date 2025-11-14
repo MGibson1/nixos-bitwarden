@@ -1,14 +1,15 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}: let
-  cfg = config.services.my.gnome;
-in {
+{pkgs, ...}: {
+  imports = [
+    ./gdm-background.nix
+  ];
+
   services.xserver.enable = true;
 
   services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.banner = ''
+    Bitwarden Development Machine
+  '';
+  services.gnome.gnome-settings-daemon.enable = true;
   services.displayManager.defaultSession = "gnome";
   services.desktopManager.gnome.enable = true;
 

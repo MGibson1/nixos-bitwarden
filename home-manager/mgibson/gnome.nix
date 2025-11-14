@@ -50,7 +50,7 @@
       show-battery-percentage = true;
     };
     "org/gnome/tweaks" = {
-      show-extension-notice = false;
+      show-extensions-notice = false;
     };
     "org/gnome/mutter" = {
       edge-tiling = true;

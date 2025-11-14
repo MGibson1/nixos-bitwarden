@@ -21,6 +21,7 @@
   vars.user = "mgibson";
   vars.default-shell = pkgs.zsh;
   programs.zsh.enable = true;
+  vars.gdm.background = ../../home-manager/backgrounds/innovation.png;
 
   home-manager = {
     users.${vars.user}.imports = [
