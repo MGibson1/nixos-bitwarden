@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../../nixos/audio.nix
+    ../../nixos/modules/audio.nix
   ];
 
   environment.systemPackages = [

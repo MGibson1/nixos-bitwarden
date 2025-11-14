@@ -41,7 +41,7 @@
           [
             path
             # modules in all systems
-            ./nixos/system-vars.nix
+            ./nixos/modules/system-vars.nix
           ]
           ++ extraModules;
       };

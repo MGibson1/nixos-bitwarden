@@ -6,13 +6,13 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ../nixos/home-manager.nix
+    ../nixos/modules/home-manager.nix
 
     ../users/admin.nix
 
-    ../nixos/locale.nix
-    ../nixos/nix.nix
-    ../nixos/security.nix
+    ../nixos/modules/locale.nix
+    ../nixos/modules/nix.nix
+    ../nixos/modules/security.nix
   ];
 
   # Yubikey

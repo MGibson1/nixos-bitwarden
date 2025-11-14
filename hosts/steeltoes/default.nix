@@ -6,11 +6,11 @@
 }: {
   imports = [
     ./audio.nix
-    ../../nixos/printing.nix
+    ../../nixos/modules/printing.nix
 
-    ../../roles/desktop
-    ../../roles/desktop/gnome.nix
-    ../../roles/development
+    ../../nixos/roles/desktop
+    ../../nixos/roles/desktop/gnome.nix
+    ../../nixos/roles/development
 
     ./hardware-configuration.nix
 
