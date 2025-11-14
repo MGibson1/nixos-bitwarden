@@ -69,6 +69,10 @@
   # 2. mkdir -p ~/.config/hardwareKey
   # 3. pamu2fcfg > ~/.config/hardwareKey/u2f_keys
   # 4. add another hardware key (optional): pamu2fcfg -n >> ~/.config/hardwareKey/u2f_keys
+  #
+  # Can also use these to decrypt luks partitions:
+  # 1. get current slots: `sudo systemd-cryptenroll /dev/nvme0n1p3`
+  # 2. enroll new key: `sudo systemd-cryptenroll /dev/nvme0n1p3 --fido2-device=auto`
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
