@@ -30,6 +30,9 @@
 
   networking.hostName = "steeltoes";
 
+  # Annoyingly luks swap devices aren't part of the hardware configuration script
+  boot.initrd.luks.devices."luks-871d65f5-4657-4c8c-8977-9a12c8a75aac".device = "/dev/disk/by-uuid/871d65f5-4657-4c8c-8977-9a12c8a75aac";
+
   # Enable fprint
   services.fprintd.enable = true;
 
