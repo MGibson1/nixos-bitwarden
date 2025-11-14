@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  imports = [
+    ./docker.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     curl # network fetch
     wget # network fetch
