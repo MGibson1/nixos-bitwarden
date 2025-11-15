@@ -23,14 +23,7 @@
         "($status) "
       ];
       right_format = lib.concatStrings [
-        "($c"
-        "$docker_context"
-        "$dotnet"
-        "$golang"
-        # "$nodejs"
-        "$typescript"
-        "$rust"
-        "$custom"
+        "($all"
         "[](fg:#55dbbe) )"
         "($hostname $shlvl)"
         "[ 󰇝 ](fg:#55dbbe)"
