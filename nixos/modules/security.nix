@@ -1,3 +1,4 @@
+{pkgs, ...}:
 # security tweaks borrowed from @hlissner
 {
   boot.kernel.sysctl = {
@@ -69,12 +70,15 @@
   # 2. mkdir -p ~/.config/hardwareKey
   # 3. pamu2fcfg > ~/.config/hardwareKey/u2f_keys
   # 4. add another hardware key (optional): pamu2fcfg -n >> ~/.config/hardwareKey/u2f_keys
-  #
-  # Can also use these to decrypt luks partitions:
-  # 1. get current slots: `sudo systemd-cryptenroll /dev/nvme0n1p3`
-  # 2. enroll new key: `sudo systemd-cryptenroll /dev/nvme0n1p3 --fido2-device=auto`
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
+  # Can use these to decrypt luks partitions
+  # export FIDO2_LABEL="/dev/sda2 @ $HOSTNAME"
+  # fido2luks credential "$FIDO2_LABEL"
+  # fido2luks -i add-key /dev/sda2 f1d00200108b9d6e849a8b388da457688e3dd653b4e53770012d8f28e5d3b269865038c346802f36f3da7278b13ad6a3bb6a1452e24ebeeaa24ba40eef559b1b287d2a2f80b7
+  environment.systemPackages = [
+    pkgs.fido2luks
+  ];
 }

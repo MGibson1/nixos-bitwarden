@@ -32,11 +32,21 @@
 
   networking.hostName = "steeltoes";
 
-  # Annoyingly luks swap devices aren't part of the hardware configuration script
-  boot.initrd.luks.devices."luks-871d65f5-4657-4c8c-8977-9a12c8a75aac".device = "/dev/disk/by-uuid/871d65f5-4657-4c8c-8977-9a12c8a75aac";
-
-  # Enable fprint
-  services.fprintd.enable = true;
+  # setup luks fido2 unlocking
+  boot.initrd.luks.fido2Support = true;
+  boot.initrd.luks.devices."luks-871d65f5-4657-4c8c-8977-9a12c8a75aac" = {
+    # Annoyingly luks swap devices aren't part of the hardware configuration script
+    device = "/dev/disk/by-uuid/871d65f5-4657-4c8c-8977-9a12c8a75aac";
+    fido2.credentials = [
+      "a6e7b5fc9f401118b3502cb3908183c4e1fd642d459eb6a44c35b7bcd987dc85040b94fcb79f7d17f0249c7be2cdff05"
+    ];
+  };
+  # Also add fido2 credential to root luks device
+  boot.initrd.luks.devices."luks-ce068190-213e-4378-acbe-02eac377c476" = {
+    fido2.credentials = [
+      "a6e7b5fc9f401118b3502cb3908183c4e1fd642d459eb6a44c35b7bcd987dc85040b94fcb79f7d17f0249c7be2cdff05"
+    ];
+  };
 
   environment.sessionVariables = {
     EDITOR = "micro";
