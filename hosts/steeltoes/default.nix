@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./audio.nix
+    ./fprint.nix
     ../../nixos/modules/printing.nix
 
     ../../nixos/roles/desktop
