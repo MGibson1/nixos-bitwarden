@@ -24,11 +24,13 @@
       ];
       right_format = lib.concatStrings [
         "($c"
+        "$docker_context"
+        "$dotnet"
         "$golang"
-        "$nodejs"
+        # "$nodejs"
+        "$typescript"
         "$rust"
         "$custom"
-        "$docker_context"
         "[](fg:#55dbbe) )"
         "($hostname $shlvl)"
         "[ 󰇝 ](fg:#55dbbe)"
@@ -83,7 +85,6 @@
       };
 
       ## Langages
-
       c = {
         format = "[ $symbol ($version) ]($style)";
       };
@@ -91,7 +92,7 @@
         format = "[ $symbol $context ]($style) $path";
       };
       dotnet = {
-        symbol = "󰌛";
+        symbol = "󰌛 ";
         detect_extensions = ["csproj" "fsproj" "xproj" "sln"];
       };
       golang = {
@@ -113,6 +114,13 @@
         style = "bold blue";
         format = "[ $symbol nix ]($style)";
         detect_extensions = ["nix"];
+      };
+      custom.typescript = {
+        disabled = false;
+        symbol = "󰛦";
+        style = "fg:#55dbbe";
+        format = "[ $symbol ($version) ]($style)";
+        detect_extensions = ["ts" "tsx" "cts" "mts"];
       };
 
       # Other Right-hand-side
