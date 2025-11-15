@@ -10,16 +10,18 @@
 
   programs.git = {
     enable = true;
-    userName = "Matt Gibson";
-    userEmail = "mgibson@bitwarden.com";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Matt Gibson";
+        email = "mgibson@bitwarden.com";
+        # Generate this key outside of home-manager with
+        # ssh-keygen -t ed25519
+        signingkey = "/home/mgibson/.ssh/bw-signing.pub";
+      };
       # Sign all commits using ssh key
       commit.gpgsign = true;
       tag.gpgsign = true;
       gpg.format = "ssh";
-      # Generate this key outside of home-manager with
-      # ssh-keygen -t ed25519
-      user.signingkey = "/home/mgibson/.ssh/bw-signing.pub";
     };
   };
 
