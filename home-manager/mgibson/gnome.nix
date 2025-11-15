@@ -73,6 +73,7 @@
       color-shading-type = "solid";
       picture-options = "scaled";
       picture-uri = "file://${builtins.toString ../backgrounds/innovation.png}";
+      picture-uri-dark = "file://${builtins.toString ../backgrounds/innovation-dark.png}";
       primary-color = "#000000000000";
       secondary-color = "#000000000000";
     };
