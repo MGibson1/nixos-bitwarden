@@ -141,6 +141,11 @@
         style = "fg:#55dbbe";
         format = "[$time]($style)";
       };
+
+      # Things I don't like
+      package = {
+        disabled = true;
+      };
     };
   };
 }
