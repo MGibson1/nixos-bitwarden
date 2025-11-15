@@ -1,4 +1,8 @@
 _: {
+  imports = [
+    ./starship.nix
+  ];
+
   programs.carapace = {
     enable = true;
     enableNushellIntegration = true;
