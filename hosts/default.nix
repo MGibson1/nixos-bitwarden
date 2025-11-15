@@ -24,6 +24,8 @@
   # Enable sensors
   environment.systemPackages = [
     pkgs.lm_sensors
+    # Agenix for secret management
+    inputs.agenix.packages."${vars.system}".default
   ];
 
   # Bootloader.

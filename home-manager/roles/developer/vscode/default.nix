@@ -12,7 +12,7 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode;
+    package = pkgs.vscode.fhs;
     profiles.default = {
       keybindings = [
         {

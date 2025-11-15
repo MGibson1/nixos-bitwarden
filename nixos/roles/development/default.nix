@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./docker.nix
+    ./dotnet.nix
+    ./openssh.nix
   ];
 
   environment.systemPackages = with pkgs; [

@@ -7,6 +7,12 @@
   inherit (lib) mkOption types;
 in {
   options.vars = {
+    system = mkOption {
+      type = types.str;
+      default = "x86_64-linux";
+      description = "The system architecture";
+      example = "aarch64-linux";
+    };
     user = mkOption {
       type = types.str;
       default = "admin";
