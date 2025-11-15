@@ -92,8 +92,6 @@ let dark_theme = {
     foreground: "#d6d6d6"
     cursor: "#d6d6d6"}
 
-source ~/.cache/starship/init.nu
-
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
   # true or false to enable or disable the welcome banner at startup

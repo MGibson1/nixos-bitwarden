@@ -13,4 +13,5 @@ _: {
     configFile.source = ./config.nu;
     envFile.source = ./env.nu;
   };
+  home.shell.enableNushellIntegration = true;
 }

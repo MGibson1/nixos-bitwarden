@@ -21,6 +21,7 @@
 
   vars.user = "mgibson";
   vars.gdm.background = ../../home-manager/backgrounds/innovation.png;
+  vars.default-shell = pkgs.nushell;
 
   home-manager = {
     users.${vars.user}.imports = [
