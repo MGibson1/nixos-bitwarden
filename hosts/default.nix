@@ -10,9 +10,11 @@
 
     ../users/admin.nix
 
+    ../nixos/modules/fonts.nix
     ../nixos/modules/locale.nix
     ../nixos/modules/nix.nix
     ../nixos/modules/security.nix
+    ../nixos/modules/system-vars.nix
   ];
 
   # Yubikey
