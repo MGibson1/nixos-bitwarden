@@ -20,8 +20,7 @@
   ];
 
   vars.user = "mgibson";
-  vars.default-shell = pkgs.zsh;
-  programs.zsh.enable = true;
+  programs.nushell.enable = true;
   vars.gdm.background = ../../home-manager/backgrounds/innovation.png;
 
   home-manager = {
