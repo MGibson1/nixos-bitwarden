@@ -10,35 +10,35 @@
     enableNushellIntegration = true;
     settings = {
       format = lib.concatStrings [
-        "[](#0d3c32)"
+        "[](#0c3276)"
         "$username"
-        "[](fg:#0d3c32 bg:#145e4e)"
+        "[](fg:#0c3276 bg:#175ddc)"
         "$directory"
-        "[](fg:#145e4e bg:#24aa8d)"
+        "[](fg:#175ddc bg:#2cdde9)"
         "$git_branch"
         "$git_commit"
         "$git_status"
         "$git_state"
-        "[](fg:#24aa8d)"
+        "[](fg:#2cdde9)"
         "($status) "
       ];
       right_format = lib.concatStrings [
         "($all"
-        "[](fg:#55dbbe) )"
+        "[](fg:#a2f4fd) )"
         "($hostname $shlvl)"
-        "[ 󰇝 ](fg:#55dbbe)"
-        "($cmd_duration[󰇝 ](fg:#55dbbe))"
+        "[ 󰇝 ](fg:#a2f4fd)"
+        "($cmd_duration[󰇝 ](fg:#a2f4fd))"
         "$time"
       ];
 
       username = {
         show_always = true;
-        style_user = "bg:#0d3c32 fg:#bdbdbd";
-        style_root = "bg:#0d3c32 fg:#6d6d6d";
+        style_user = "bg:#0c3276 fg:#f3f6f9";
+        style_root = "bg:#0c3276 fg:#f3f6f9";
         format = "[ $user ]($style)";
       };
       directory = {
-        style = "bg:#145e4e fg:#bdbdbd";
+        style = "bg:#175ddc fg:#f3f6f9";
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
@@ -51,25 +51,25 @@
       };
       git_branch = {
         symbol = "";
-        style = "bg:#24aa8d fg:#11111b";
+        style = "bg:#2cdde9 fg:#000000";
         format = "[ $symbol $branch]($style)";
       };
       git_commit = {
-        style = "bg:#24aa8d fg:#11111b";
+        style = "bg:#2cdde9 fg:#000000";
         commit_hash_length = 4;
         only_detached = true;
         tag_disabled = false;
         format = "[ $hash$tag]($style)";
       };
       git_status = {
-        style = "bg:#24aa8d fg:#11111b";
+        style = "bg:#2cdde9 fg:#000000";
         diverged = "󱦲$ahead_count󱦳$behind_count";
         ahead = "󱦲$count";
         behind = "󱦳$count";
         format = "[$all_status$ahead_behind ]($style)";
       };
       git_state = {
-        style = "bg:#24aa8d fg:#aa2441 bold";
+        style = "bg:#2cdde9 fg:#ff6550 bold";
         format = "\([ $state($progress_current/$progress_total) ]($style)\)";
       };
       status = {
@@ -93,12 +93,12 @@
       };
       nodejs = {
         # symbol = "";
-        # style = "fg:#55dbbe";
+        # style = "fg:#a2f4fd";
         format = "[ $symbol ($version) ]($style)";
       };
       rust = {
         # symbol = "";
-        # style = "fg:#55dbbe";
+        # style = "fg:#a2f4fd";
         format = "[ $symbol ($version) ]($style)";
       };
       custom.nix = {
@@ -111,7 +111,7 @@
       custom.typescript = {
         disabled = false;
         symbol = "󰛦";
-        style = "fg:#55dbbe";
+        style = "fg:#a2f4fd";
         format = "[ $symbol ($version) ]($style)";
         detect_extensions = ["ts" "tsx" "cts" "mts"];
       };
@@ -120,7 +120,7 @@
 
       hostname = {
         ssh_symbol = "";
-        style = "fg:#e6cd69";
+        style = "fg:#fdc700";
         format = "[@$hostname]($style)";
         ssh_only = false;
         disabled = false;
@@ -128,7 +128,7 @@
       shlvl = {
         disabled = false;
         threshold = 1;
-        style = "fg:#e6cd69";
+        style = "fg:#fdc700";
         format = "[$shlvl󰹺]($style)";
       };
       cmd_duration = {
@@ -138,7 +138,7 @@
       time = {
         disabled = false;
         time_format = "%R"; # Hour:Minute Format
-        style = "fg:#55dbbe";
+        style = "fg:#a2f4fd";
         format = "[$time]($style)";
       };
 
