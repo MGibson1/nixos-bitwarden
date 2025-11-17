@@ -3,6 +3,9 @@
     ./docker.nix
     ./dotnet.nix
     ./openssh.nix
+
+    ./clients-dev.nix
+    ./server-dev.nix
   ];
 
   environment.systemPackages = with pkgs; [
