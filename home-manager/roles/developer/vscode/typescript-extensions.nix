@@ -28,8 +28,9 @@
       "[html]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
-      "jest.showCoverageOnLoad" = true;
+      "jest.runMode" = "watch";
       "jest.shell" = "bash";
+      "jest.coverageFormatter" = "GutterFormatter";
     };
   };
 }
