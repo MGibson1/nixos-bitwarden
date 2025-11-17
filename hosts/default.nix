@@ -23,12 +23,14 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable sensors
   environment.systemPackages = [
+    # Enable sensors
     pkgs.lm_sensors
     # Agenix for secret management
     inputs.agenix.packages."${vars.system}".default
   ];
+
+  age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"]; # isn't set automatically for some reason
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

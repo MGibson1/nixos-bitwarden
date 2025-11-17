@@ -42,6 +42,7 @@
             path
             # modules in all systems
             ./nixos/modules/system-vars.nix
+            inputs.agenix.nixosModules.default
           ]
           ++ extraModules;
       };
