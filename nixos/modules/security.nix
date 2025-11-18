@@ -25,9 +25,7 @@
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
-  security.pam.u2f = {
-    cue = true;
-  };
+  security.pam.u2f.settings.cue = true;
   # Can use these to decrypt luks partitions
   # export FIDO2_LABEL="/dev/sda2 @ $HOSTNAME"
   # fido2luks credential "$FIDO2_LABEL"
