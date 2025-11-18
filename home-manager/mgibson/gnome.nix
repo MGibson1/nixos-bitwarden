@@ -77,5 +77,11 @@
       primary-color = "#000000000000";
       secondary-color = "#000000000000";
     };
+    # Night light color temperature and schedule
+    "org/gnome/settings-daemon/plugins/color" = {
+      night-light-enabled = true;
+      night-light-schedule-automatic = true;
+      night-light-temperature = 3158;
+    };
   };
 }
