@@ -5,6 +5,7 @@
     ./openssh.nix
 
     ./clients-dev.nix
+    ./sdk-dev.nix
     ./server-dev.nix
   ];
 
