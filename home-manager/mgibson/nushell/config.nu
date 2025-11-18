@@ -481,14 +481,6 @@ $env.config = {
   ]
 }
 
-# create new direnv nix flake template from https://github.com/the-nix-way/dev-templates
-def dvt [
-    lang: string # The language of the project to pull the template for
-    ] {
-    nix flake init -t $"github:the-nix-way/dev-templates#($lang)"
-}
-
-
 # nix-shell alias that drops me into nushell
 def nixs [...packages: string] {
     nix-shell -p --command nu ...$packages
@@ -517,14 +509,6 @@ def weather [
   } else {
     $result | split row "\n" | drop 2 | str join "\n"
   }
-}
-
-def vpn [] {
-  do -i { mullvad status } | if $in starts-with "Disconnected" { 
-    print "connecting"; mullvad connect 
-    } else {
-      print "disconnecting"; mullvad disconnect
-    }
 }
 
 # Alias rusty shell aliases
