@@ -18,12 +18,15 @@
   services.gnome.gnome-keyring.enable = true;
 
   # 1. nix-shell -p pam_u2f
-  # 2. mkdir -p ~/.config/hardwareKey
-  # 3. pamu2fcfg > ~/.config/hardwareKey/u2f_keys
-  # 4. add another hardware key (optional): pamu2fcfg -n >> ~/.config/hardwareKey/u2f_keys
+  # 2. mkdir -p ~/.config/Yubico
+  # 3. pamu2fcfg > ~/.config/Yubico/u2f_keys
+  # 4. add another hardware key (optional): pamu2fcfg -n >> ~/.config/Yubico/u2f_keys
   security.pam.services = {
     login.u2fAuth = true;
     sudo.u2fAuth = true;
+  };
+  security.pam.u2f = {
+    cue = true;
   };
   # Can use these to decrypt luks partitions
   # export FIDO2_LABEL="/dev/sda2 @ $HOSTNAME"
