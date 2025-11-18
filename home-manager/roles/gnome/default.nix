@@ -39,7 +39,7 @@ in {
       };
       "org/gnome/desktop/break-reminders/movement" = {
         duration-seconds = 300;
-        interval-seconds = 1800;
+        interval-seconds = 3600;
       };
     };
 
