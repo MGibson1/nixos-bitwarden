@@ -6,7 +6,8 @@
 }: {
   imports = [
     ./audio.nix
-    ./fprint.nix
+    ./fix-sleep.nix
+    # ./fprint.nix
     ../../nixos/modules/printing.nix
 
     ../../nixos/roles/desktop
