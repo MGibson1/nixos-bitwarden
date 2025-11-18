@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  home.packages = [
+    pkgs.claude-code
+  ];
+
   programs.vscode.profiles.default = {
     extensions = with pkgs.vscode-extensions;
       [
