@@ -22,6 +22,10 @@
       commit.gpgsign = true;
       tag.gpgsign = true;
       gpg.format = "ssh";
+      credential = {
+        "https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
+        "https://gist.github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
+      };
     };
   };
 

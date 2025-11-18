@@ -13,6 +13,7 @@
     curl # network fetch
     wget # network fetch
 
+    gh # github cli for auth
     gitFull # git
     git-crypt # git
 
