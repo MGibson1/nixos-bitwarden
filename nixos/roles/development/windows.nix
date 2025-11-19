@@ -57,19 +57,6 @@ in {
       "iommu=pt"
     ];
 
-    # Enable libvirtd daemon for VM management
-    # After enabling this module, you need to:
-    # 1. Rebuild and reboot your system
-    # 2. Create a VM using virt-manager (GUI) or virsh (CLI)
-    # 3. When creating the VM, ensure you:
-    #    - Select "UEFI x86_64: /usr/share/OVMF/OVMF_CODE.secboot.fd" as firmware
-    #    - Add TPM device (Type: Emulated, Model: TIS, Version: 2.0)
-    #    - Use the virtio-win ISO for Windows drivers during installation
-    #    - Allocate at least 4GB RAM and 64GB disk space
-    # 4. During Windows installation, you may need to load the VirtIO drivers:
-    #    - Attach the virtio-win ISO as a CDROM
-    #    - Click "Load driver" when Windows doesn't see the disk
-    #    - Browse to E:\viostor\w11\amd64 (adjust drive letter as needed)
     virtualisation.libvirtd = {
       enable = true;
       qemu = {
@@ -82,6 +69,7 @@ in {
           user = "${cfg.user}"
           group = "libvirtd"
         '';
+        vhostUserPackages = [pkgs.virtiofsd];
       };
     };
 
@@ -110,6 +98,9 @@ in {
       ]
       ++ optionals cfg.enableLookingGlass [
         looking-glass-client
+      ]
+      ++ [
+        freerdp # RDP client for remote connections
       ];
 
     # Networking for VMs
