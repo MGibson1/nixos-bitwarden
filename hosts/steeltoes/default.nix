@@ -13,6 +13,7 @@
     ../../nixos/roles/desktop
     ../../nixos/roles/desktop/gnome.nix
     ../../nixos/roles/development
+    ../../nixos/roles/development/windows.nix
 
     ./hardware-configuration.nix
 
@@ -46,6 +47,12 @@
     fido2.credentials = [
       "a6e7b5fc9f401118b3502cb3908183c4e1fd642d459eb6a44c35b7bcd987dc85040b94fcb79f7d17f0249c7be2cdff05"
     ];
+  };
+
+  # Windows VM configuration
+  virtualisation.windows11 = {
+    enable = true;
+    kvmVariant = "kvm-amd";
   };
 
   environment.sessionVariables = {
