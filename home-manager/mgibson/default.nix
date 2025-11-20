@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  vars,
+  ...
+}: {
   imports = [
     ./gnome.nix
     ../roles/developer
@@ -16,7 +20,7 @@
         email = "mgibson@bitwarden.com";
         # IMPERATIVE: Generate this key outside of home-manager with
         # ssh-keygen -t ed25519
-        signingkey = "/home/mgibson/.ssh/bw-signing.pub";
+        signingkey = "/home/${vars.user}/.ssh/bw-signing.pub";
       };
       # Sign all commits using ssh key
       commit.gpgsign = true;
@@ -26,8 +30,20 @@
         "https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
         "https://gist.github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
       };
+      core.excludesFile = "/home/${vars.user}/.gitignore_global";
     };
   };
+
+  home.file.".gitignore_global".text = ''
+    # direnv files and associated flakes
+    .direnv
+    .envrc
+    flake.lock
+    flake.nix
+
+    # rust targets
+    /target
+  '';
 
   home.stateVersion = "25.05";
 }

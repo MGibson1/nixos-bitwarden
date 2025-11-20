@@ -16,6 +16,7 @@
     cargo
     cargo-sort
     cargo-udeps
+    cargo-xbuild
     libsecret
   ];
 }
