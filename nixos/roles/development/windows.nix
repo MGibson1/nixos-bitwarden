@@ -105,15 +105,5 @@ in {
 
     # Networking for VMs
     networking.firewall.checkReversePath = false; # May be needed for bridged networking
-
-    # Create a polkit rule to allow libvirt management without password
-    security.polkit.extraConfig = ''
-      polkit.addRule(function(action, subject) {
-        if (action.id == "org.libvirt.unix.manage" &&
-            subject.isInGroup("libvirtd")) {
-          return polkit.Result.YES;
-        }
-      });
-    '';
   };
 }
