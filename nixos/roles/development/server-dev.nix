@@ -1,18 +1,6 @@
-{
-  config,
-  vars,
-  ...
-}: {
-  age.secrets.dev-cer = {
-    file = ../../../secrets/dev.pem.age;
-    owner = vars.user;
-    group = "users";
-    mode = "770";
-    path = "/etc/ssl/certs/dev.pem";
-    symlink = false;
-  };
-
-  # TODO: get automated cert working with security.pki.certificateFiles
-  # Currently there are complaints finding the agenix managed cert
-  # This doesn't _have_ to be encrypted, but the cert is currently not public.
+{...}: {
+  # We dont' appear to be able to use agenix to link certificateFiles. These aren't really secret anyway, so exposing through git-crypt is fine
+  security.pki.certificateFiles = [
+    ../../../secrets/git-crypt/dev.pem
+  ];
 }

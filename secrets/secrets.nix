@@ -1,5 +1,5 @@
 let
-  mgibson_user = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPVoxVJz/qMl4zUCUEoGLxA896EKbVRg+ZcUK9aKf7uk mgibson@steeltoes_nix";
+  mgibson_user = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKrZpj66GbyYUpIsvFaAeWlCJjdftYTJDUDjTmNsknKR mgibson@steeltoes";
   users = [mgibson_user];
 
   steeltoes_host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOXq3E2OrMUSav9Qn2AXqr2qcJFRcD/WW1ZQuUDznH2W root@steeltoes";
@@ -7,6 +7,7 @@ let
 in {
   "test.age".publicKeys = users ++ hosts;
 
-  # server dev ca cert
-  "dev.pem.age".publicKeys = hosts;
+  # web dev ca cert
+  "rootCA.pem.age".publicKeys = hosts ++ users;
+  "rootCA-key.pem.age".publicKeys = hosts ++ users;
 }

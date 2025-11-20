@@ -4,6 +4,8 @@
 
     ./browsers.nix
     ./vscode
+
+    ./clients-dev.nix
   ];
 
   services.flatpak.packages = [
