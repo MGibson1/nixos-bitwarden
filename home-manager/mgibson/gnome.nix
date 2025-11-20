@@ -35,6 +35,7 @@
     ];
   };
 
+  # IMPERATIVE: determine new settings with `dconf watch /`
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,close";

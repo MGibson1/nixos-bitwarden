@@ -14,7 +14,7 @@
       user = {
         name = "Matt Gibson";
         email = "mgibson@bitwarden.com";
-        # Generate this key outside of home-manager with
+        # IMPERATIVE: Generate this key outside of home-manager with
         # ssh-keygen -t ed25519
         signingkey = "/home/mgibson/.ssh/bw-signing.pub";
       };

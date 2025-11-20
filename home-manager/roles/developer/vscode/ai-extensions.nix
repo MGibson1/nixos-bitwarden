@@ -10,7 +10,6 @@
         github.copilot-chat
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        # For some reason this causes all other extensions to not be installed
         {
           name = "claude-code";
           publisher = "anthropic";

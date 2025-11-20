@@ -14,7 +14,7 @@ in {
     };
 
     installed-extensions = mkOption {
-      # type = types.listOf types.str;
+      type = types.listOf types.package;
       default = [];
       description = "List of extension packages to install";
     };

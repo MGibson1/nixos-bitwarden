@@ -17,6 +17,7 @@
   };
   services.gnome.gnome-keyring.enable = true;
 
+  # IMPERATIVE: how to set up u2f login
   # 1. nix-shell -p pam_u2f
   # 2. mkdir -p ~/.config/Yubico
   # 3. pamu2fcfg > ~/.config/Yubico/u2f_keys
@@ -26,10 +27,15 @@
     sudo.u2fAuth = true;
   };
   security.pam.u2f.settings.cue = true;
+
+  # IMPERATIVE: how to set up fido2 luks decryption
   # Can use these to decrypt luks partitions
   # export FIDO2_LABEL="/dev/sda2 @ $HOSTNAME"
   # fido2luks credential "$FIDO2_LABEL"
   # fido2luks -i add-key /dev/sda2 <big long thing from the last command>
+  #
+  # You also need to dd the <big long thing from credential command> to
+  # boot.initrd.luks.devices.<luks-device>.fido2.credentials
   environment.systemPackages = [
     pkgs.fido2luks
     pkgs.clevis
