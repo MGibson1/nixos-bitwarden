@@ -28,6 +28,8 @@ in {
       description = "Install virt-manager GUI for VM management";
     };
 
+    enableWinboat = mkEnableOption "Enable Winboat for easier Windows VM management";
+
     enableGpuPassthrough = mkOption {
       type = types.bool;
       default = false;
@@ -91,6 +93,7 @@ in {
 
         # Management tools
         virtiofsd # Shared folder support
+        freerdp # RDP client for remote connections
       ]
       ++ optionals cfg.enableGUI [
         virt-manager # Full-featured GUI
@@ -99,8 +102,9 @@ in {
       ++ optionals cfg.enableLookingGlass [
         looking-glass-client
       ]
-      ++ [
-        freerdp # RDP client for remote connections
+      ++ optionals cfg.enableWinboat [
+        # IMPERATIVE: configure winboat through GUI
+        winboat
       ];
 
     # Networking for VMs
