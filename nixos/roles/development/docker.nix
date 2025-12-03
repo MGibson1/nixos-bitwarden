@@ -19,4 +19,9 @@ in {
   environment.systemPackages = [
     bw-docker-script
   ];
+
+  # Set node heap allocation to 4GB
+  environment.sessionVariables = {
+    NODE_OPTIONS = "--max-old-space-size=8192";
+  };
 }

@@ -28,6 +28,9 @@
       "[html]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
+      "[json]" = {
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      };
       "jest.runMode" = "watch";
       "jest.shell" = "bash";
       "jest.coverageFormatter" = "GutterFormatter";

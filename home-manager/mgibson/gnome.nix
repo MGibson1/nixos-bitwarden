@@ -12,6 +12,8 @@
       "io.dbeaver.DBeaverCommunity.desktop"
     ];
     installed-extensions = with pkgs.gnomeExtensions; [
+      auto-move-windows
+      bluetooth-battery-meter
       battery-time-percentage-compact
       caffeine
       ddterm
@@ -21,9 +23,12 @@
       appindicator
       user-themes
       vitals
+      wellbeing-toggle
     ];
     enabled-extensions = [
+      "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
       "batterytimepercentagecompact@sagrland.de"
+      "Bluetooth-Battery-Meter@maniacx.github.com"
       "caffeine@patapon.info"
       "ddterm@amezin.github.com"
       "eepresetselector@ulville.github.io"
@@ -32,6 +37,7 @@
       "appindicatorsupport@rgcjonas.gmail.com"
       "user-theme@gnome-shell-extensions.gcampax.github.com"
       "Vitals@CoreCoding.com"
+      "wellbeingtoggle@m51.io"
     ];
   };
 
@@ -56,6 +62,14 @@
     "org/gnome/mutter" = {
       edge-tiling = true;
       dynamic-workspaces = true;
+    };
+    # Wait a little longer than usual to turn off screen, this is for wellbeing
+    "org/gnome/desktop/session" = {
+      idle-delay = 480;
+    };
+    # Auto Move Windows settings
+    "org/gnome/shell/extensions/auto-move-windows" = {
+      application-list = ["com.slack.Slack.desktop:1" "firefox.desktop:3" "code.desktop:2"];
     };
     # ddTerm settings
     "com/github/amezin/ddterm" = {

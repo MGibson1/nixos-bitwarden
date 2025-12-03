@@ -43,6 +43,9 @@
 
     # rust targets
     /target
+
+    # server dev/helpers should be ignored
+    dev/helpers
   '';
 
   home.stateVersion = "25.05";
