@@ -7,4 +7,6 @@
   security.pki.certificateFiles = [
     ../../../secrets/git-crypt/rootCA.pem
   ];
+
+  programs.npm.enable = true;
 }
