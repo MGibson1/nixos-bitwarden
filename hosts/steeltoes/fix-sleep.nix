@@ -8,12 +8,7 @@
     SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x15e8", ATTR{power/control}="on"
   '';
 
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-  '';
+  powerManagement.enable = true;
 
   # Commented out - these break Thunderbolt on resume
   # systemd.services.fix-thunderbolt-sleep = {

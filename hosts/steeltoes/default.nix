@@ -25,6 +25,9 @@
   vars.gdm.background = ../../home-manager/backgrounds/innovation.png;
   vars.default-shell = pkgs.nushell;
 
+  # Use latest kernel, not latest lts
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   home-manager = {
     users.${vars.user}.imports = [
       ../../home-manager/mgibson
@@ -40,6 +43,9 @@
       size = 96 * 1024; # 96 GiB in MiB
     }
   ];
+  boot.resumeDevice = "/dev/disk/by-uuid/4b728eb2-d411-4085-8fc2-e5810c4ef5a3";
+  # IMPERATIVE: `sudo filefrag /var/lib/swapfile | head` and grab the physical offset of the first extent
+  boot.kernelParams = ["resume_offset=2977792"];
 
   # setup luks fido2 unlocking
   boot.initrd.luks.fido2Support = true;
