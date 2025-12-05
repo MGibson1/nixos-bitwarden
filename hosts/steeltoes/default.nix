@@ -48,15 +48,18 @@
   boot.kernelParams = ["resume_offset=2977792"];
 
   # setup luks fido2 unlocking
-  boot.initrd.luks.fido2Support = true;
-
-  # Also add fido2 credential to root luks device
-  boot.initrd.luks.devices."luks-ce068190-213e-4378-acbe-02eac377c476" = {
-    # IMPERATIVE: these are created as a part of adding fido2 decryption to luks partitions described in security.nix
-    fido2.credentials = [
-      "417637e9f60a961b503abec656dd111c3af116c603dd2797c4abfe913abe091f4c7e4fa5ae1fa974adbb3b37d506ae67"
-      "22503dadcf5fb414f38bdf26aefea69d2747bc9f3cfe2ac07e9d2696d35deb758c86264b59baab45892bbb0bc57942b8"
-    ];
+  boot.initrd = {
+    systemd.enable = true;
+    luks.fido2Support = false; # handled by systemd
+    luks.devices."luks-ce068190-213e-4378-acbe-02eac377c476" = {
+      # IMPERATIVE: set up a fido2 credential on this luks device
+      # Optionally, create a fido2 pin using something like yubioauth-flutter
+      # then, create the luks entry with:
+      # `sudo systemd-cryptenroll /dev/nvme0n1p2 --fido2-device=auto --fido2-with-user-presence=false --fido2-with-user-verification=true`
+      crypttabExtraOpts = [
+        "fido2-device=auto"
+      ];
+    };
   };
 
   # Windows VM configuration
