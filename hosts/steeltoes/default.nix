@@ -33,17 +33,17 @@
 
   networking.hostName = "steeltoes";
 
+  # Swapfile configuration
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 96 * 1024; # 96 GiB in MiB
+    }
+  ];
+
   # setup luks fido2 unlocking
   boot.initrd.luks.fido2Support = true;
-  # IMPERATIVE: Annoyingly luks swap devices aren't part of the hardware configuration script
-  boot.initrd.luks.devices."luks-871d65f5-4657-4c8c-8977-9a12c8a75aac" = {
-    device = "/dev/disk/by-uuid/871d65f5-4657-4c8c-8977-9a12c8a75aac";
-    # IMPERATIVE: these are created as a part of adding fido2 decryption to luks partitions described in security.nix
-    fido2.credentials = [
-      "417637e9f60a961b503abec656dd111c3af116c603dd2797c4abfe913abe091f4c7e4fa5ae1fa974adbb3b37d506ae67"
-      "22503dadcf5fb414f38bdf26aefea69d2747bc9f3cfe2ac07e9d2696d35deb758c86264b59baab45892bbb0bc57942b8"
-    ];
-  };
+
   # Also add fido2 credential to root luks device
   boot.initrd.luks.devices."luks-ce068190-213e-4378-acbe-02eac377c476" = {
     # IMPERATIVE: these are created as a part of adding fido2 decryption to luks partitions described in security.nix
