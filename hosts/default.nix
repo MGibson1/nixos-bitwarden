@@ -10,6 +10,7 @@
 
     ../users/admin.nix
 
+    ../nixos/modules/distrobox.nix
     ../nixos/modules/fonts.nix
     ../nixos/modules/locale.nix
     ../nixos/modules/nix.nix
