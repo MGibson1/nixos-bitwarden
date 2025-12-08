@@ -31,6 +31,6 @@
   environment.systemPackages = [
     pkgs.fido2luks
     pkgs.clevis
-    pkgs.yubioauth-flutter
+    pkgs.yubioath-flutter
   ];
 }

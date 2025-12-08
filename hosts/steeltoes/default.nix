@@ -53,7 +53,7 @@
     luks.fido2Support = false; # handled by systemd
     luks.devices."luks-ce068190-213e-4378-acbe-02eac377c476" = {
       # IMPERATIVE: set up a fido2 credential on this luks device
-      # Optionally, create a fido2 pin using something like yubioauth-flutter
+      # Optionally, create a fido2 pin using something like yubioath-flutter
       # then, create the luks entry with:
       # `sudo systemd-cryptenroll /dev/nvme0n1p2 --fido2-device=auto --fido2-with-user-presence=false --fido2-with-user-verification=true`
       crypttabExtraOpts = [
