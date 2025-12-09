@@ -3,7 +3,7 @@
   vars,
   ...
 }: let
-  homeDir = "/home/${vars.user}";
+  homeDir = "${vars.home-dir}/${vars.user}";
 in {
   imports = [
     inputs.agenix.homeManagerModules.default

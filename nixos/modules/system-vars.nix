@@ -57,6 +57,12 @@ in {
       default = pkgs.bash;
       description = "The default user shell to apply";
     };
+    home-dir = mkOption {
+      type = types.str;
+      default = "/home";
+      description = "The directory to house user home directories";
+      example = "/storage/home";
+    };
   };
 
   config._module.args.vars = config.vars;

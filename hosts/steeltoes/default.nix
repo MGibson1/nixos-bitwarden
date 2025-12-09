@@ -22,6 +22,7 @@
   ];
 
   vars.user = "mgibson";
+  vars.home-dir = "/storage/home";
   vars.gdm.background = ../../home-manager/backgrounds/innovation.png;
   vars.default-shell = pkgs.nushell;
 

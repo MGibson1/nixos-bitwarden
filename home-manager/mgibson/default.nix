@@ -20,7 +20,7 @@
         email = "mgibson@bitwarden.com";
         # IMPERATIVE: Generate this key outside of home-manager with
         # ssh-keygen -t ed25519
-        signingkey = "/home/${vars.user}/.ssh/bw-signing.pub";
+        signingkey = "${vars.home-dir}/${vars.user}/.ssh/bw-signing.pub";
       };
       # Sign all commits using ssh key
       commit.gpgsign = true;
@@ -30,7 +30,7 @@
         "https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
         "https://gist.github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
       };
-      core.excludesFile = "/home/${vars.user}/.gitignore_global";
+      core.excludesFile = "${vars.home-dir}/${vars.user}/.gitignore_global";
     };
   };
 
