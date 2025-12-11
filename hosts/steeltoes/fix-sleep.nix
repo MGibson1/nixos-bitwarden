@@ -10,6 +10,13 @@
 
   powerManagement.enable = true;
 
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=yes
+    AllowHibernation=yes
+    AllowHybridSleep=yes
+    AllowSuspendThenHibernate=yes
+  '';
+
   # Commented out - these break Thunderbolt on resume
   # systemd.services.fix-thunderbolt-sleep = {
   #   description = "Unbind Thunderbolt 3 controller before suspend";
