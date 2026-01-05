@@ -17,7 +17,6 @@
       battery-time-percentage-compact
       caffeine
       ddterm
-      easyeffects-preset-selector
       gtile
       night-theme-switcher
       appindicator
@@ -31,7 +30,6 @@
       "Bluetooth-Battery-Meter@maniacx.github.com"
       "caffeine@patapon.info"
       "ddterm@amezin.github.com"
-      "eepresetselector@ulville.github.io"
       "gTile@vibou"
       "nightthemeswitcher@romainvigier.fr"
       "appindicatorsupport@rgcjonas.gmail.com"
