@@ -7,6 +7,12 @@
         rust-lang.rust-analyzer
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "vscode-rust-test-adapter";
+          publisher = "swellaby";
+          version = "0.11.0";
+          sha256 = "sha256-IgfcIRF54JXm9l2vVjf7lFJOVSI0CDgDjQT+Hw6FO4Q=";
+        }
       ];
     userSettings = {
       "[rust]" = {

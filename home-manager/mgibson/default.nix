@@ -42,7 +42,10 @@
     flake.nix
 
     # rust targets
-    /target
+    **/target
+
+    # structurizr internals
+    **/.structurizr
 
     # server dev/helpers should be ignored
     dev/helpers

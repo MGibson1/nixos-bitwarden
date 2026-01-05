@@ -27,6 +27,7 @@
         "csharp"
         "xml"
       ];
+      "debug.onTaskErrors" = "debugAnyway";
     };
   };
 }
