@@ -14,4 +14,7 @@ in {
   # web dev ca cert
   "rootCA.pem.age".publicKeys = all;
   "rootCA-key.pem.age".publicKeys = all;
+
+  # mgibson
+  "mgibson-environment-secrets.env.age".publicKeys = [mgibson_user steeltoes_host];
 }

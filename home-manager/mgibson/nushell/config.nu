@@ -183,7 +183,7 @@ $env.config = {
   history: {
     max_size: 100_000 # Session has to be reloaded for this to take effect
     sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
-    file_format: "plaintext" # "sqlite" or "plaintext"
+    file_format: "sqlite" # "sqlite" or "plaintext"
     isolation: true # true enables history isolation, false disables it. true will allow the history to be isolated to the current session. false will allow the history to be shared across all sessions.
   }
   completions: {
@@ -514,3 +514,27 @@ def weather [
 # Alias rusty shell aliases
 alias cat = bat
 alias find = fd
+
+# Converts a .env file into a record
+# may be used like this: open .env | load-env
+# works with quoted and unquoted .env files
+def "from env" []: string -> record {
+  lines
+    | split column '#' # remove comments
+    | get column0
+    | parse "{key}={value}"
+    | update value {
+        str trim                        # Trim whitespace between value and inline comments
+          | str trim -c '"'             # unquote double-quoted values
+          | str trim -c "'"             # unquote single-quoted values
+          | str replace -a "\\n" "\n"   # replace `\n` with newline char
+          | str replace -a "\\r" "\r"   # replace `\r` with carriage return
+          | str replace -a "\\t" "\t"   # replace `\t` with tab
+    }
+    | transpose -r -d
+}
+
+# source secret environment variables if available
+if ("~/.config/env-secrets.env" | path exists) {
+  open ~/.config/env-secrets.env | load-env
+}
