@@ -8,7 +8,6 @@
         ms-vscode.hexeditor
         github.vscode-pull-request-github
         mkhl.direnv
-        kamikillerto.vscode-colorize
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       ];
