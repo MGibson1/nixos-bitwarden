@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  dbox-claude-script = pkgs.writeShellScriptBin "dbox-claude" ''
+    #!/bin/sh
+    set -e
+
+    distrobox enter claude -e ~/.local/bin/claude "$@"
+  '';
+in {
   home.packages = [
     pkgs.claude-code
   ];
@@ -19,6 +26,7 @@
       ];
     userSettings = {
       "claudeCode.preferredLocation" = "sidebar";
+      "claudeCode.claudeProcessWrapper" = "${dbox-claude-script}/bin/dbox-claude";
     };
   };
 }
