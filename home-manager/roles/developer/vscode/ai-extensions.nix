@@ -8,6 +8,7 @@
 in {
   home.packages = [
     pkgs.claude-code
+    dbox-claude-script
   ];
 
   programs.vscode.profiles.default = {
