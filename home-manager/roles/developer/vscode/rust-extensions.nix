@@ -25,6 +25,7 @@
       "rust-analyzer.lens.references.enumVariant.enable" = true;
       "rust-analyzer.lens.references.method.enable" = true;
       "rust-analyzer.lens.references.trait.enable" = true;
+      "rust-analyzer.cargo.features" = "all";
       "lldb.suppressUpdateNotifications" = true;
     };
   };
