@@ -51,6 +51,10 @@
 
     # server dev/helpers should be ignored
     dev/helpers
+
+    # claude local files
+    .claude/settings.local.json
+    CLAUDE.local.md
   '';
 
   # need to configure any sessions to source this file on startup
