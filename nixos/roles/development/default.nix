@@ -26,7 +26,7 @@ in {
 
   config = {
     # Set libraries for dynamic loading
-    environment.variables.LD_LIBRARY_PATH = lib.makeLibraryPath config.role.dev.dynamic-libraries;
+    environment.sessionVariables.LD_LIBRARY_PATH = lib.makeLibraryPath config.role.dev.dynamic-libraries;
 
     environment.systemPackages = with pkgs; [
       curl # network fetch

@@ -10,10 +10,10 @@
     pkgs.dotnet-aspnetcore_9
   ];
 
-  environment.variables = {
+  environment.sessionVariables = {
     DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet";
   };
   role.dev.dynamic-libraries = with pkgs; [
-    icu
+    (lib.getLib icu)
   ];
 }
