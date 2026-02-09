@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
+  mkOption = lib.mkOption;
+in {
   imports = [
     ./docker.nix
     ./dotnet.nix
@@ -9,38 +16,51 @@
     ./server-dev.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    curl # network fetch
-    wget # network fetch
+  options = {
+    role.dev.dynamic-libraries = mkOption {
+      type = with lib.types; listOf package;
+      default = [];
+      description = "Additional libraries to include in the development environment.";
+    };
+  };
 
-    gh # github cli for auth
-    gitFull # git
-    git-crypt # git
+  config = {
+    # Set libraries for dynamic loading
+    environment.variables.LD_LIBRARY_PATH = lib.makeLibraryPath config.role.dev.dynamic-libraries;
 
-    htop # system management
-    pciutils # system information
-    usbutils # system information
-    psmisc # system management like killall, pstree, fuser
-    util-linux
+    environment.systemPackages = with pkgs; [
+      curl # network fetch
+      wget # network fetch
 
-    helix # editor
-    vim # editor
-    micro # editor
-    (aspellWithDicts (dicts: with dicts; [en en-computers en-science])) # Spelling dictionaries
+      gh # github cli for auth
+      gitFull # git
+      git-crypt # git
 
-    unzip # file management
-    fd # file search
-    jq # cli json manipulation
-    ripgrep # search
-    bat # print file contents nicely
-    eza # modern ls
+      htop # system management
+      pciutils # system information
+      usbutils # system information
+      psmisc # system management like killall, pstree, fuser
+      util-linux
 
-    bc # terminal calculator
-    hyperfine # benchmarking
-    watch # rerun commands on a schedule
+      helix # editor
+      vim # editor
+      micro # editor
+      (aspellWithDicts (dicts: with dicts; [en en-computers en-science])) # Spelling dictionaries
 
-    sshfs # ssh file mounting
+      unzip # file management
+      fd # file search
+      jq # cli json manipulation
+      ripgrep # search
+      bat # print file contents nicely
+      eza # modern ls
 
-    powershell # cross platform shell necessary for bitwarden dev scripts
-  ];
+      bc # terminal calculator
+      hyperfine # benchmarking
+      watch # rerun commands on a schedule
+
+      sshfs # ssh file mounting
+
+      powershell # cross platform shell necessary for bitwarden dev scripts
+    ];
+  };
 }

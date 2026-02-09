@@ -9,4 +9,11 @@
     pkgs.dotnetCorePackages.dotnet_9.aspnetcore
     pkgs.dotnet-aspnetcore_9
   ];
+
+  environment.variables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet";
+  };
+  role.dev.dynamic-libraries = with pkgs; [
+    icu
+  ];
 }
