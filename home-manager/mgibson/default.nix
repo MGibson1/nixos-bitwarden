@@ -65,5 +65,7 @@
     path = "${vars.home-dir}/${vars.user}/.config/env-secrets.env";
   };
 
+  programs.bash.enable = true;
+
   home.stateVersion = "25.05";
 }

@@ -6,6 +6,7 @@
     ./vscode
 
     ./clients-dev.nix
+    ./server-dev.nix
   ];
 
   services.flatpak.packages = [
