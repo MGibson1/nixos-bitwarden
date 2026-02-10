@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   vars,
@@ -17,6 +18,9 @@
     ../nixos/modules/security.nix
     ../nixos/modules/system-vars.nix
   ];
+
+  # Bitwarden branding
+  boot.plymouth.logo = lib.mkIf (vars.boot-splash-png != null) (builtins.toString vars.boot-splash-png);
 
   # Yubikey
   services.pcscd.enable = true;

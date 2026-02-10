@@ -63,6 +63,16 @@ in {
       description = "The directory to house user home directories";
       example = "/storage/home";
     };
+    boot-splash-svg = mkOption {
+      type = types.nullOr types.path;
+      default = null;
+      description = "The SVG logo to show on the boot splash screen";
+    };
+    boot-splash-png = mkOption {
+      type = types.nullOr types.path;
+      default = ../../images/bw-shield.png;
+      description = "The PNG logo to show on the boot splash screen";
+    };
   };
 
   config._module.args.vars = config.vars;

@@ -1,24 +1,27 @@
 {
-  config,
   lib,
+  pkgs,
+  vars,
   ...
 }: let
-  cfg = config.vars.gdm;
-  inherit (lib) mkIf mkOption types;
+  inherit (lib) mkIf;
+  logo = if vars.boot-splash-svg != null then vars.boot-splash-svg else vars.boot-splash-png;
 in {
-  options.vars.gdm.background = mkOption {
-    type = types.nullOr types.path;
-    default = null;
-    description = "Optional path to use for a gdm background";
-  };
-
-  config = mkIf (cfg.background != null) {
-    programs.dconf.profiles.gdm.databases = [
-      {
-        settings."org/gnome/desktop/background" = {
-          picture-uri = "file://${builtins.toString cfg.background}";
-        };
-      }
-    ];
+  config = mkIf (logo != null) {
+    nixpkgs = let
+      override = pkgs.replaceVars ./org.gnome.login-screen.gschema.override {
+        icon = builtins.toString logo;
+      };
+    in {
+      overlays = [
+        (self: super: {
+          gdm = super.gdm.overrideAttrs (gfinal: gprev: {
+            preInstall = ''
+              install -D ${override} "$DESTDIR/$out/share/glib-2.0/schemas/org.gnome.login-screen.gschema.override"
+            '';
+          });
+        })
+      ];
+    };
   };
 }

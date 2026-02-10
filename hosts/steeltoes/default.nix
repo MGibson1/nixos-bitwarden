@@ -23,7 +23,7 @@
 
   vars.user = "mgibson";
   vars.home-dir = "/storage/home";
-  vars.gdm.background = ../../home-manager/backgrounds/innovation.png;
+  vars.boot-splash-svg = ../../images/bw-shield.svg;
   vars.default-shell = pkgs.nushell;
 
   # Use latest kernel, not latest lts
