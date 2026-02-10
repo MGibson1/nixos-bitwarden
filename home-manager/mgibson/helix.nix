@@ -1,7 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    helix-gpt
-
     rust-analyzer
     lldb
   ];
