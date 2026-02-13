@@ -5,6 +5,7 @@
         vadimcn.vscode-lldb
         tamasfe.even-better-toml
         rust-lang.rust-analyzer
+        hbenl.vscode-test-explorer
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {

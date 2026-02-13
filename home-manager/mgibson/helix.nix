@@ -2,6 +2,9 @@
   home.packages = with pkgs; [
     rust-analyzer
     lldb
+
+    zellij
+    yazi
   ];
 
   programs.helix = {

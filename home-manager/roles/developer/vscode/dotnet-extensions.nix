@@ -4,6 +4,7 @@
       [
         ms-dotnettools.csharp
         ms-dotnettools.csdevkit
+        ms-dotnettools.vscode-dotnet-runtime
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
