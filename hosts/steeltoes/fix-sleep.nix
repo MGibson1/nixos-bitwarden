@@ -12,9 +12,9 @@
 
   systemd.sleep.extraConfig = ''
     AllowSuspend=yes
-    AllowHibernation=yes
-    AllowHybridSleep=yes
-    AllowSuspendThenHibernate=yes
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
   '';
 
   # Commented out - these break Thunderbolt on resume
