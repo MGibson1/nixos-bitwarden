@@ -1,5 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = [
+    pkgs.csharprepl
+
     pkgs.dotnet-sdk_8
     pkgs.dotnetCorePackages.dotnet_8.runtime
     pkgs.dotnetCorePackages.dotnet_8.aspnetcore
