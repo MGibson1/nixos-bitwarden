@@ -11,8 +11,8 @@
   powerManagement.enable = true;
 
   systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=no
+    AllowSuspend=no
+    AllowHibernation=yes
     AllowHybridSleep=no
     AllowSuspendThenHibernate=no
   '';
