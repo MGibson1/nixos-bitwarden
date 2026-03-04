@@ -55,6 +55,10 @@
         "workbench.colorTheme" = "Default Dark+";
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.tabSize" = 2;
+        "files.exclude" = {
+          "**/.direnv" = true;
+          "**/.jj" = true;
+        };
       };
     };
   };
