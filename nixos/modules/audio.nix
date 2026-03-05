@@ -15,13 +15,13 @@
     #media-session.enable = true;
 
     # Explicitly set enabled bluetooth roles
-    wireplumber.extraConfig."10-bluez" = {
-      "monitor.bluez.properties" = {
-        "bluez5.roles" = [
-          "a2dp_sink"
-          "bap_sink"
-        ];
-      };
-    };
+    # wireplumber.extraConfig."10-bluez" = {
+    #   "monitor.bluez.properties" = {
+    #     "bluez5.roles" = [
+    #       "a2dp_sink"
+    #       "bap_sink"
+    #     ];
+    #   };
+    # };
   };
 }
