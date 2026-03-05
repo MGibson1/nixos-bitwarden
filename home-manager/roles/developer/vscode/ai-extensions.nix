@@ -3,7 +3,7 @@
     #!/bin/sh
     set -e
 
-    distrobox enter claude -e ~/.local/bin/claude "$@"
+    exec distrobox enter claude -e ~/.local/bin/claude "$@"
   '';
 in {
   home.packages = [
