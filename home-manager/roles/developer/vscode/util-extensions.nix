@@ -11,5 +11,8 @@
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       ];
+    userSettings = {
+      "githubPullRequests.commentExpandState" = "collapseAll";
+    };
   };
 }
