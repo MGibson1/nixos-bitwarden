@@ -59,6 +59,7 @@
           "**/.direnv" = true;
           "**/.jj" = true;
         };
+        "editor.inlineSuggest.enabled" = false;
       };
     };
   };

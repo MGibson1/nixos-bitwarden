@@ -2,6 +2,8 @@
   environment.systemPackages = with pkgs; [
     nodejs_22
     mkcert
+
+    xsel
   ];
 
   security.pki.certificateFiles = [
