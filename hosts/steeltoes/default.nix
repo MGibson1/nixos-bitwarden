@@ -67,7 +67,7 @@
   virtualisation.windows11 = {
     enable = true;
     kvmVariant = "kvm-amd";
-    enableWinboat = true;
+    enableWinboat = false;
   };
 
   environment.sessionVariables = {
