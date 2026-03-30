@@ -27,7 +27,7 @@ in {
       ];
     userSettings = {
       "claudeCode.preferredLocation" = "sidebar";
-      "claudeCode.claudeProcessWrapper" = "${dbox-claude-script}/bin/dbox-claude";
+      # "claudeCode.claudeProcessWrapper" = "${dbox-claude-script}/bin/dbox-claude";
     };
   };
 }
