@@ -52,7 +52,7 @@
         "window.restoreWindows" = "all";
         "window.titleBarStyle" = "custom";
         "workbench.commandPalette.experimental.suggestCommands" = true;
-        "workbench.colorTheme" = "Default Dark+";
+        "workbench.colorTheme" = "Dark+";
         "diffEditor.ignoreTrimWhitespace" = false;
         "editor.tabSize" = 2;
         "files.exclude" = {

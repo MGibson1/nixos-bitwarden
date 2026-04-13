@@ -53,7 +53,7 @@
     dev/helpers
 
     # claude local files
-    .claude/settings.local.json
+    **/.claude/settings.local.json
     CLAUDE.local.md
   '';
 
