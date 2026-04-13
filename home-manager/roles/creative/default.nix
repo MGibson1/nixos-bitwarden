@@ -3,5 +3,6 @@
     "org.gimp.GIMP"
     "org.inkscape.Inkscape"
     "org.kde.kdenlive"
+    "org.onlyoffice.desktopeditors"
   ];
 }
