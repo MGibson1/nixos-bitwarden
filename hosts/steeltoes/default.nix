@@ -71,7 +71,7 @@
   };
 
   environment.sessionVariables = {
-    EDITOR = "micro";
+    EDITOR = "hx";
   };
 
   # Enable tpm
