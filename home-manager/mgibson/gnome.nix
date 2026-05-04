@@ -96,5 +96,8 @@
       night-light-schedule-automatic = true;
       night-light-temperature = 3158;
     };
+    "org/gnome/shell/app-switcher" = {
+      current-workspace-only = true;
+    };
   };
 }
