@@ -17,7 +17,7 @@
   ];
 
   environment.sessionVariables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk_8}/share/dotnet";
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
   };
   role.dev.dynamic-libraries = with pkgs; [
     (lib.getLib icu)
