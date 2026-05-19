@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./ai-extensions.nix
     ./dotnet-extensions.nix
@@ -35,6 +36,7 @@
       ];
       userSettings = {
         "update.mode" = "none";
+        "extensions.autoUpdate" = false;
         "telemetry.telemetryLevel" = "off";
         "telemetry.feedback.enabled" = false;
         "debug.toolBarLocation" = "docked";
