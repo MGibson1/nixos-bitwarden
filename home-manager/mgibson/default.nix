@@ -33,6 +33,7 @@
         "https://gist.github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
       };
       core.excludesFile = "${vars.home-dir}/${vars.user}/.gitignore_global";
+      init.defaultBranch = "main";
     };
   };
 
