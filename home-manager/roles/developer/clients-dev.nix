@@ -10,4 +10,13 @@
       path = "${vars.home-dir}/${vars.user}/.local/share/mkcert/rootCA-key.pem";
     };
   };
+
+  # Defaults prefix location to $HOME/.npm
+  programs.npm = {
+    enable = true;
+  };
+
+  home.sessionPath = [
+    config.programs.npm.settings.prefix
+  ];
 }
