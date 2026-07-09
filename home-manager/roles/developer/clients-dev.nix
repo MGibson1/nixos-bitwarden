@@ -1,4 +1,8 @@
-{config, vars, ...}: {
+{
+  config,
+  vars,
+  ...
+}: {
   age.secrets = {
     rootCA = {
       # Note, this is also added to security.pki.certificateFiles in the nixos role: development/clients-dev.nix

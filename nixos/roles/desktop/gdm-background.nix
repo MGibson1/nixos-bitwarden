@@ -5,7 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf;
-  logo = if vars.boot-splash-svg != null then vars.boot-splash-svg else vars.boot-splash-png;
+  logo =
+    if vars.boot-splash-svg != null
+    then vars.boot-splash-svg
+    else vars.boot-splash-png;
 in {
   config = mkIf (logo != null) {
     nixpkgs = let

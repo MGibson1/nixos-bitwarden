@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./ai-extensions.nix
     ./dotnet-extensions.nix
