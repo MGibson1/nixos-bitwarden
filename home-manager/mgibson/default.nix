@@ -11,7 +11,7 @@
     ./nushell
     ./helix.nix
 
-    ../default.nix
+    ../common.nix
   ];
 
   programs.git = {

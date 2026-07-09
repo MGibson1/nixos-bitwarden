@@ -17,6 +17,8 @@
     ../nixos/modules/nix.nix
     ../nixos/modules/security.nix
     ../nixos/modules/system-vars.nix
+
+    ../nixos/roles/common.nix
   ];
 
   # Bitwarden branding
