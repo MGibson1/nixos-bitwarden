@@ -25,6 +25,13 @@
           when = "terminalFocus && terminalProcessSupported || terminalFocus && terminal WebExtensionContributedProfile";
         }
         {
+          # direnv tries to reload terminal environments, but this is done through a relaunch request, which is not
+          # automatic and dramatically slows the terminal down
+          key = "ctrl+t ctrl+r";
+          command= "workbench.action.terminal.relaunch";
+          when = "terminalFocus";
+        }
+        {
           key = "ctrl+alt+meta+left";
           command = "workbench.action.moveEditorToPreviousGroup";
         }
