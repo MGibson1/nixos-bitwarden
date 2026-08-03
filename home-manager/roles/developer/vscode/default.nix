@@ -42,7 +42,7 @@
       ];
       userSettings = {
         "update.mode" = "none";
-        "extensions.autoUpdate" = false;
+        "extensions.autoUpdate" = "off";
         "telemetry.telemetryLevel" = "off";
         "telemetry.feedback.enabled" = false;
         "debug.toolBarLocation" = "docked";
