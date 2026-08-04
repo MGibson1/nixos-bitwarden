@@ -1,4 +1,15 @@
 #!/bin/sh
+
+action="${1:?Usage: $0 \{boot|switch\}}"
+
+case "$action" in
+  boot|switch) ;;
+  *)
+    echo "Usage: $0 {boot|switch}" >&2
+    exit 1
+    ;;
+esac
+
 git add .
 git-crypt unlock ./git-crypt-key
 sudo nixos-rebuild switch --flake ".#$HOSTNAME"
