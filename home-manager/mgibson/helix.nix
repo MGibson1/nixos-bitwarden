@@ -13,13 +13,13 @@ in
     lldb
 
     typescript-language-server
-    vscode-langservers-extracted #HTML/CSS/JSON/ESLint
+    vscode-langservers-extracted # HTML/CSS/JSON/ESLint
     tailwindcss-language-server
     prettier
-    marksman #markdown
+    marksman # markdown
     nil # nix
     sql-formatter
-    taplo #toml
+    taplo # toml
     yaml-language-server
 
     zellij
@@ -61,6 +61,8 @@ in
         d = "delete_selection_noyank";
         A-c = "change_selection";
         c = "change_selection_noyank";
+
+        home = "goto_first_nonwhitespace";
       };
     };
 
@@ -96,15 +98,25 @@ in
       language = [
         {
           name = "css";
-          language-servers = [ "vscode-css-language-server" "tailwindcss-ls" "helix-assist" ];
+          language-servers = [
+            "vscode-css-language-server"
+            "tailwindcss-ls"
+            "helix-assist"
+          ];
           auto-format = true;
         }
         {
           name = "html";
-          language-servers = [ "vscode-html-language-server" "tailwindcss-ls" ];
+          language-servers = [
+            "vscode-html-language-server"
+            "tailwindcss-ls"
+          ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
@@ -119,7 +131,10 @@ in
           ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
@@ -133,7 +148,10 @@ in
           ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
@@ -147,9 +165,15 @@ in
           ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
-          file-types = [ "jsonc" "hujson" ];
+          file-types = [
+            "jsonc"
+            "hujson"
+          ];
           auto-format = true;
         }
         {
@@ -164,7 +188,10 @@ in
           ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
@@ -173,7 +200,10 @@ in
           language-servers = [ "marksman" ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
@@ -186,10 +216,16 @@ in
         }
         {
           name = "rust";
-          language-servers = [ "rust-analyzer" "helix-assist" ];
+          language-servers = [
+            "rust-analyzer"
+            "helix-assist"
+          ];
           formatter = {
             command = "cargo";
-            args = [ "+nightly" "fmt" ];
+            args = [
+              "+nightly"
+              "fmt"
+            ];
           };
           auto-format = true;
         }
@@ -197,7 +233,12 @@ in
           name = "sql";
           formatter = {
             command = "sql-formatter";
-            args = [ "-l" "postgresql" "-c" "{\"keywordCase\": \"lower\", \"dataTypeCase\": \"lower\", \"functionCase\": \"lower\", \"expressionWidth\": 120, \"tabWidth\": 4}" ];
+            args = [
+              "-l"
+              "postgresql"
+              "-c"
+              "{\"keywordCase\": \"lower\", \"dataTypeCase\": \"lower\", \"functionCase\": \"lower\", \"expressionWidth\": 120, \"tabWidth\": 4}"
+            ];
           };
           auto-format = true;
         }
@@ -206,7 +247,12 @@ in
           language-servers = [ "taplo" ];
           formatter = {
             command = "taplo";
-            args = [ "fmt" "-o" "column_width=120" "-" ];
+            args = [
+              "fmt"
+              "-o"
+              "column_width=120"
+              "-"
+            ];
           };
           auto-format = true;
         }
@@ -222,7 +268,10 @@ in
           ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
@@ -237,7 +286,10 @@ in
           ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
@@ -246,7 +298,10 @@ in
           language-servers = [ "yaml-language-server" ];
           formatter = {
             command = "prettier";
-            args = [ "--stdin-filepath" "%{buffer_name}" ];
+            args = [
+              "--stdin-filepath"
+              "%{buffer_name}"
+            ];
           };
           auto-format = true;
         }
