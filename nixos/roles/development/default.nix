@@ -61,6 +61,8 @@ in {
       sshfs # ssh file mounting
 
       powershell # cross platform shell necessary for bitwarden dev scripts
+
+      pnpm
     ];
   };
 }
