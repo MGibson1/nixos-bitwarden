@@ -1,10 +1,19 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  helix-assist = pkgs.callPackage ../../packages/helix-assist.nix {};
+
+  # Cost/latency dials, billed per request. Upstream defaults: 200ms, claude-haiku-4-5, 1.
+  assistDebounceMs = 1000;
+  assistModel = "claude-haiku-4-5";
+  assistSuggestions = 1;
+in {
   home.packages = with pkgs; [
     rust-analyzer
     lldb
 
     zellij
     yazi
+
+    helix-assist
   ];
 
   programs.helix = {
@@ -25,9 +34,18 @@
     };
 
     languages = {
-      language-server.gpt = {
-        command = "helix-gpt";
-        args = ["--handler" "copilot"];
+      language-server.helix-assist = {
+        command = "${helix-assist}/bin/helix-assist";
+        args = [
+          "--handler"
+          "anthropic"
+          "--anthropic-model"
+          assistModel
+          "--debounce"
+          (toString assistDebounceMs)
+          "--num-suggestions"
+          (toString assistSuggestions)
+        ];
       };
 
       language-server.rust-analyzer = {
@@ -46,7 +64,7 @@
       language = [
         {
           name = "css";
-          language-servers = ["vscode-css-language-server" "tailwindcss-ls" "gpt"];
+          language-servers = ["vscode-css-language-server" "tailwindcss-ls" "helix-assist"];
           auto-format = true;
         }
         {
@@ -65,7 +83,7 @@
               name = "typescript-language-server";
               except-features = ["format"];
             }
-            "gpt"
+            "helix-assist"
           ];
           auto-format = true;
         }
@@ -106,7 +124,7 @@
               except-features = ["format"];
             }
             "tailwindcss-ls"
-            "gpt"
+            "helix-assist"
           ];
           formatter = {
             command = "prettier";
@@ -132,7 +150,7 @@
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "gpt"];
+          language-servers = ["rust-analyzer" "helix-assist"];
           formatter = {
             command = "cargo";
             args = ["+nightly" "fmt"];
@@ -164,7 +182,7 @@
               except-features = ["format"];
             }
             "tailwindcss-ls"
-            "gpt"
+            "helix-assist"
           ];
           formatter = {
             command = "prettier";
@@ -179,7 +197,7 @@
               name = "typescript-language-server";
               except-features = ["format"];
             }
-            "gpt"
+            "helix-assist"
           ];
           formatter = {
             command = "prettier";
