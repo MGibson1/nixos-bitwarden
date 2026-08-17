@@ -1,14 +1,26 @@
-{pkgs, ...}: let
-  helix-assist = pkgs.callPackage ../../packages/helix-assist.nix {};
+{ pkgs, ... }:
+let
+  helix-assist = pkgs.callPackage ../../packages/helix-assist.nix { };
 
   # Cost/latency dials, billed per request. Upstream defaults: 200ms, claude-haiku-4-5, 1.
   assistDebounceMs = 1000;
   assistModel = "claude-haiku-4-5";
   assistSuggestions = 1;
-in {
+in
+{
   home.packages = with pkgs; [
     rust-analyzer
     lldb
+
+    typescript-language-server
+    vscode-langservers-extracted #HTML/CSS/JSON/ESLint
+    tailwindcss-language-server
+    prettier
+    marksman #markdown
+    nil # nix
+    sql-formatter
+    taplo #toml
+    yaml-language-server
 
     zellij
     yazi
@@ -19,17 +31,36 @@ in {
   programs.helix = {
     enable = true;
     settings = {
+      theme = "monokai_pro";
       editor = {
+        bufferline = "multiple";
         scroll-lines = 1; # default: 3
         line-number = "relative";
         mouse = true;
-        default-yank-register = "+"; # use system clipboard
+        # default-yank-register = "+"; # use system clipboard
 
         cursor-shape = {
           insert = "bar";
           normal = "block";
           select = "underline";
         };
+
+        whitespace-render = "all";
+        indent-guides.render = true;
+      };
+
+      keys.normal = {
+        x = "select_line_below";
+        X = "select_line_above";
+        C-pageup = ":buffer-previous";
+        C-pagedown = ":buffer-next";
+        C-w = ":buffer-close";
+
+        # swap delete/change yank/no-yank default to noyank
+        A-d = "delete_selection";
+        d = "delete_selection_noyank";
+        A-c = "change_selection";
+        c = "change_selection_noyank";
       };
     };
 
@@ -57,22 +88,23 @@ in {
           };
         };
       };
-      language-server.typescript-language-server.config.tsserver = {
-        path = "${pkgs.typescript}/lib/node_modules/typescript/lib/tsserver.js";
+
+      language-server.nix-language-server = {
+        command = "nil";
       };
 
       language = [
         {
           name = "css";
-          language-servers = ["vscode-css-language-server" "tailwindcss-ls" "helix-assist"];
+          language-servers = [ "vscode-css-language-server" "tailwindcss-ls" "helix-assist" ];
           auto-format = true;
         }
         {
           name = "html";
-          language-servers = ["vscode-html-language-server" "tailwindcss-ls"];
+          language-servers = [ "vscode-html-language-server" "tailwindcss-ls" ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
           auto-format = true;
         }
@@ -81,10 +113,14 @@ in {
           language-servers = [
             {
               name = "typescript-language-server";
-              except-features = ["format"];
+              except-features = [ "format" ];
             }
             "helix-assist"
           ];
+          formatter = {
+            command = "prettier";
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
+          };
           auto-format = true;
         }
         {
@@ -92,12 +128,12 @@ in {
           language-servers = [
             {
               name = "vscode-json-language-server";
-              except-features = ["format"];
+              except-features = [ "format" ];
             }
           ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
           auto-format = true;
         }
@@ -106,14 +142,14 @@ in {
           language-servers = [
             {
               name = "vscode-json-language-server";
-              except-features = ["format"];
+              except-features = [ "format" ];
             }
           ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
-          file-types = ["jsonc" "hujson"];
+          file-types = [ "jsonc" "hujson" ];
           auto-format = true;
         }
         {
@@ -121,23 +157,23 @@ in {
           language-servers = [
             {
               name = "typescript-language-server";
-              except-features = ["format"];
+              except-features = [ "format" ];
             }
             "tailwindcss-ls"
             "helix-assist"
           ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
           auto-format = true;
         }
         {
           name = "markdown";
-          language-servers = ["marksman"];
+          language-servers = [ "marksman" ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
           auto-format = true;
         }
@@ -150,10 +186,10 @@ in {
         }
         {
           name = "rust";
-          language-servers = ["rust-analyzer" "helix-assist"];
+          language-servers = [ "rust-analyzer" "helix-assist" ];
           formatter = {
             command = "cargo";
-            args = ["+nightly" "fmt"];
+            args = [ "+nightly" "fmt" ];
           };
           auto-format = true;
         }
@@ -161,16 +197,16 @@ in {
           name = "sql";
           formatter = {
             command = "sql-formatter";
-            args = ["-l" "postgresql" "-c" "{\"keywordCase\": \"lower\", \"dataTypeCase\": \"lower\", \"functionCase\": \"lower\", \"expressionWidth\": 120, \"tabWidth\": 4}"];
+            args = [ "-l" "postgresql" "-c" "{\"keywordCase\": \"lower\", \"dataTypeCase\": \"lower\", \"functionCase\": \"lower\", \"expressionWidth\": 120, \"tabWidth\": 4}" ];
           };
           auto-format = true;
         }
         {
           name = "toml";
-          language-servers = ["taplo"];
+          language-servers = [ "taplo" ];
           formatter = {
             command = "taplo";
-            args = ["fmt" "-o" "column_width=120" "-"];
+            args = [ "fmt" "-o" "column_width=120" "-" ];
           };
           auto-format = true;
         }
@@ -179,14 +215,14 @@ in {
           language-servers = [
             {
               name = "typescript-language-server";
-              except-features = ["format"];
+              except-features = [ "format" ];
             }
             "tailwindcss-ls"
             "helix-assist"
           ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
           auto-format = true;
         }
@@ -195,22 +231,22 @@ in {
           language-servers = [
             {
               name = "typescript-language-server";
-              except-features = ["format"];
+              except-features = [ "format" ];
             }
             "helix-assist"
           ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
           auto-format = true;
         }
         {
           name = "yaml";
-          language-servers = ["yaml-language-server"];
+          language-servers = [ "yaml-language-server" ];
           formatter = {
             command = "prettier";
-            args = ["--stdin-filepath" "%{buffer_name}"];
+            args = [ "--stdin-filepath" "%{buffer_name}" ];
           };
           auto-format = true;
         }
