@@ -514,6 +514,8 @@ def weather [
 # Alias rusty shell aliases
 alias cat = bat
 alias find = fd
+alias z = zellij
+alias lg = lazygit
 
 # Converts a .env file into a record
 # may be used like this: open .env | load-env

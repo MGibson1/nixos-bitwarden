@@ -45,7 +45,7 @@ in
           select = "underline";
         };
 
-        whitespace-render = "all";
+        whitespace.render = "all";
         indent-guides.render = true;
       };
 

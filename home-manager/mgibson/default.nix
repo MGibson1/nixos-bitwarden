@@ -3,13 +3,16 @@
   pkgs,
   vars,
   ...
-}: {
+}:
+{
   imports = [
     ./gnome.nix
     ../roles/developer
     ../roles/creative
     ./nushell
     ./helix.nix
+    ./lazygit.nix
+    ./zellij
 
     ../common.nix
   ];
