@@ -28,6 +28,11 @@
     # helix-assist
   ];
 
+  # global ignores for helix file picker
+  home.file.".config/helix/ignore".text = ''
+    .direnv
+  '';
+
   programs.helix = {
     enable = true;
     settings = {
