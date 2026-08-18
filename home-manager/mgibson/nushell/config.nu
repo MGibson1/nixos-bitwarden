@@ -514,7 +514,6 @@ def weather [
 # Alias rusty shell aliases
 alias cat = bat
 alias find = fd
-alias z = zellij
 alias lg = lazygit
 
 # change directory with yazi on 'c'

@@ -1,10 +1,23 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    zellij
-    yazi # terminal file manager
-
     alacritty # terminal set up for zellij session
   ];
+
+  programs.zellij = {
+    enable = true;
+    enableBashIntegration = true;
+    # plugins = with pkgs.zellijPlugins; [
+    #   autolock
+    # ];
+  };
+
+  # terminal file namager
+  programs.yazi = {
+    enable = true;
+    enableBashIntegration = true;
+    enableNushellIntegration = true;
+    shellWrapperName = "y";
+  };
 
   home.file.".config/alacritty/alacritty.toml".text = ''
     [window]
