@@ -47,6 +47,16 @@ in
 
         whitespace.render = "all";
         indent-guides.render = true;
+        file-picker.hidden = false;
+
+        inline-diagnostics = {
+          cursor-line = "warning";
+        };
+
+        lsp = {
+          display-progress-messages = true;
+          display-inlay-hints = true;
+        };
       };
 
       keys.normal = {
