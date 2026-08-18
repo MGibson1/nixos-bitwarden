@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
     zellij
+    yazi # terminal file manager
 
     alacritty # terminal set up for zellij session
   ];

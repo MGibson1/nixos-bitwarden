@@ -517,6 +517,17 @@ alias find = fd
 alias z = zellij
 alias lg = lazygit
 
+# change directory with yazi on 'c'
+def --env c [...args] {
+  let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+  ^yazi ...$args --cwd-file $tmp
+  let cwd = (open $tmp)
+  if $cwd != $env.PWD and ($cwd | path exists) {
+    cd $cwd
+  }
+  rm -fp $tmp
+}
+
 # Converts a .env file into a record
 # may be used like this: open .env | load-env
 # works with quoted and unquoted .env files
