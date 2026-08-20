@@ -78,6 +78,10 @@
         c = "change_selection_noyank";
 
         home = "goto_first_nonwhitespace";
+
+        space = {
+          h = "file_picker_in_current_buffer_directory";
+        };
       };
     };
 
