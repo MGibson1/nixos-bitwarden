@@ -1,7 +1,11 @@
-{inputs, ...}: {
+{ inputs, pkgs, ... }: {
   services.flatpak.enable = true;
   imports = [
     inputs.nix-flatpak.nixosModules.nix-flatpak
+  ];
+
+  environment.systemPackages = [
+    pkgs.python3
   ];
 
   services.flatpak.packages = [
@@ -10,7 +14,8 @@
 
   # Force keyctl instead of memfd_secret so the kernel can hibernate.
   # https://github.com/bitwarden/clients/blob/main/apps/desktop/desktop_native/core/src/secure_memory/secure_key/mod.rs
-  services.flatpak.overrides."com.bitwarden.desktop".Environment.SECURE_KEY_CONTAINER_BACKEND = "mlock";
+  services.flatpak.overrides."com.bitwarden.desktop".Environment.SECURE_KEY_CONTAINER_BACKEND =
+    "mlock";
 
   # polkit policy for system auth: https://bitwarden.com/help/biometrics/#tab-linux-2vCWb5iFg4OqKS0B2xXpqW
   # Source: https://github.com/bitwarden/clients/blob/main/apps/desktop/resources/com.bitwarden.desktop.policy
