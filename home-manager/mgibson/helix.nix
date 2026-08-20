@@ -1,12 +1,12 @@
 { pkgs, ... }:
-# let
-# helix-assist = pkgs.callPackage ../../packages/helix-assist.nix { };
+let
+  helix-assist = pkgs.callPackage ../../packages/helix-assist.nix { };
 
-# # Cost/latency dials, billed per request. Upstream defaults: 200ms, claude-haiku-4-5, 1.
-# assistDebounceMs = 1000;
-# assistModel = "claude-haiku-4-5";
-# assistSuggestions = 1;
-# in
+  # Cost/latency dials, billed per request. Upstream defaults: 200ms, claude-haiku-4-5, 1.
+  assistDebounceMs = 1000;
+  assistModel = "claude-haiku-4-5";
+  assistSuggestions = 1;
+in
 {
   home.packages = with pkgs; [
     rust-analyzer
@@ -25,7 +25,7 @@
     zellij
     yazi
 
-    # helix-assist
+    helix-assist
   ];
 
   # global ignores for helix file picker
@@ -86,19 +86,19 @@
     };
 
     languages = {
-      # language-server.helix-assist = {
-      #   command = "${helix-assist}/bin/helix-assist";
-      #   args = [
-      #     "--handler"
-      #     "anthropic"
-      #     "--anthropic-model"
-      #     assistModel
-      #     "--debounce"
-      #     (toString assistDebounceMs)
-      #     "--num-suggestions"
-      #     (toString assistSuggestions)
-      #   ];
-      # };
+      language-server.helix-assist = {
+        command = "${helix-assist}/bin/helix-assist";
+        args = [
+          "--handler"
+          "anthropic"
+          "--anthropic-model"
+          assistModel
+          "--debounce"
+          (toString assistDebounceMs)
+          "--num-suggestions"
+          (toString assistSuggestions)
+        ];
+      };
 
       language-server.rust-analyzer = {
         command = "rust-analyzer";
@@ -120,7 +120,7 @@
           language-servers = [
             "vscode-css-language-server"
             "tailwindcss-ls"
-            # "helix-assist"
+            "helix-assist"
           ];
           auto-format = true;
         }
@@ -146,7 +146,7 @@
               name = "typescript-language-server";
               except-features = [ "format" ];
             }
-            # "helix-assist"
+            "helix-assist"
           ];
           formatter = {
             command = "prettier";
@@ -203,7 +203,7 @@
               except-features = [ "format" ];
             }
             "tailwindcss-ls"
-            # "helix-assist"
+            "helix-assist"
           ];
           formatter = {
             command = "prettier";
@@ -237,7 +237,7 @@
           name = "rust";
           language-servers = [
             "rust-analyzer"
-            # "helix-assist"
+            "helix-assist"
           ];
           formatter = {
             command = "cargo";
@@ -283,7 +283,7 @@
               except-features = [ "format" ];
             }
             "tailwindcss-ls"
-            # "helix-assist"
+            "helix-assist"
           ];
           formatter = {
             command = "prettier";
@@ -301,7 +301,7 @@
               name = "typescript-language-server";
               except-features = [ "format" ];
             }
-            # "helix-assist"
+            "helix-assist"
           ];
           formatter = {
             command = "prettier";

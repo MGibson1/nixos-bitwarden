@@ -27,7 +27,7 @@
         name = "c-sharp";
         language-servers = [
           "roslyn-language-server"
-          # "helix-assist"
+          "helix-assist"
         ];
         comment-token = [
           "//"
