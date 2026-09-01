@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./gdm-background.nix
   ];
@@ -22,7 +22,6 @@
     iagno # go game
     hitori # sudoku game
     atomix # puzzle game
-    gnome-photos
     gnome-tour
     gnome-contacts
     gnome-initial-setup
@@ -39,9 +38,6 @@
   environment.systemPackages = with pkgs; [
     gnome-tweaks
     gnome-browser-connector
-    numix-gtk-theme
-    numix-icon-theme
-    numix-cursor-theme
 
     # vms
     gnome-boxes
@@ -54,25 +50,31 @@
   virtualisation.spiceUSBRedirection.enable = true;
 
   # Hardcode themes and icons locations to FHS for things like flatpak
-  system.fsPackages = [pkgs.bindfs];
-  fileSystems = let
-    mkRoSymBind = path: {
-      device = path;
-      fsType = "fuse.bindfs";
-      options = ["ro" "resolve-symlinks" "x-gvfs-hide"];
+  system.fsPackages = [ pkgs.bindfs ];
+  fileSystems =
+    let
+      mkRoSymBind = path: {
+        device = path;
+        fsType = "fuse.bindfs";
+        options = [
+          "ro"
+          "resolve-symlinks"
+          "x-gvfs-hide"
+        ];
+      };
+      aggregated = pkgs.buildEnv {
+        name = "system-themed-and-icons";
+        paths = with pkgs; [
+        ];
+        pathsToLink = [
+          "/share/themes"
+          "/share/icons"
+        ];
+      };
+    in
+    {
+      # Create an FHS mount to support flatpak host icons/themes
+      "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
+      "/usr/share/themes" = mkRoSymBind "${aggregated}/share/themes";
     };
-    aggregated = pkgs.buildEnv {
-      name = "system-themed-and-icons";
-      paths = with pkgs; [
-        numix-gtk-theme
-        numix-icon-theme
-        numix-cursor-theme
-      ];
-      pathsToLink = ["/share/themes" "/share/icons"];
-    };
-  in {
-    # Create an FHS mount to support flatpak host icons/themes
-    "/usr/share/icons" = mkRoSymBind "${aggregated}/share/icons";
-    "/usr/share/themes" = mkRoSymBind "${aggregated}/share/themes";
-  };
 }

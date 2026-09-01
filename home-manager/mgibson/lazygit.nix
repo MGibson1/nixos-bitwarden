@@ -4,12 +4,12 @@
     enableBashIntegration = true;
     enableNushellIntegration = true;
     settings = {
-      git.pagers = [
+      git.diffRenderers = [
         {
-          pager = "delta --dark --paging=never --features=split-diff";
+          command = "delta --dark --paging=never --features=split-diff";
         }
         {
-          pager = "delta --dark --paging=never --features=stack-diff";
+          command = "delta --dark --paging=never --features=stack-diff";
         }
       ];
     };
