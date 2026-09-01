@@ -1,1 +1,5 @@
 git-crypt-key
+
+# `nix build .#<name>` output symlinks
+result
+result-*

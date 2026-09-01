@@ -17,4 +17,10 @@ in {
 
   # mgibson
   "mgibson-environment-secrets.env.age".publicKeys = [mgibson_user steeltoes_host];
+
+  # endpoint security agent enrollment tokens. Read by root systemd units at
+  # start; never interpolated into a derivation, since the store is world-readable.
+  "rapid7-token.age".publicKeys = all;
+  "sentinelone-token.age".publicKeys = all;
+  "automox-access-key.age".publicKeys = all;
 }

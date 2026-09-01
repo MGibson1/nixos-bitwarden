@@ -60,5 +60,17 @@
         path = ./hosts/steeltoes;
       };
     };
+
+    # Exposed so `nix build .#<name>` can iterate on a package without a full
+    # nixos-rebuild. allowUnfree mirrors hosts/common.nix, which the vendor
+    # binary packages under ./packages need in order to evaluate at all.
+    packages = nixpkgs.lib.genAttrs systems (system: let
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in {
+      helix-assist = pkgs.callPackage ./packages/helix-assist.nix {};
+    });
   };
 }
