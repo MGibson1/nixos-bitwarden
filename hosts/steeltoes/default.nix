@@ -50,8 +50,6 @@
 
   # setup luks fido2 unlocking
   boot.initrd = {
-    systemd.enable = true;
-    luks.fido2Support = false; # handled by systemd
     luks.devices."luks-ce068190-213e-4378-acbe-02eac377c476" = {
       # IMPERATIVE: set up a fido2 credential on this luks device
       # Optionally, create a fido2 pin using something like yubioath-flutter

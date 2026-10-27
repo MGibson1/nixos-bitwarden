@@ -45,7 +45,7 @@ in {
       helix # editor
       vim # editor
       micro # editor
-      (aspellWithDicts (dicts: with dicts; [en en-computers en-science])) # Spelling dictionaries
+      (aspellWithDicts (dicts: with dicts; [en])) # Spelling dictionaries
 
       unzip # file management
       fd # file search
